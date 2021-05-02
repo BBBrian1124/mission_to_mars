@@ -6,7 +6,7 @@
 [Mission_to_Mars_Challenge.ipynb] https://github.com/BBBrian1124/mission_to_mars/blob/main/Challenge/Mission_to_Mars_Challenge.ipynb
 
 # An updated scraping.py file.d
-* Scraping code about refactored into functions to be used by app
+* Scraping code above refactored into functions to be used by app
 
 [scraping.py] https://github.com/BBBrian1124/mission_to_mars/blob/main/Challenge/scraping.py
 
