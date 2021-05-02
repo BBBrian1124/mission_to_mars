@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+   <title>Mission to Mars</title>
+   <!--insert the link for Bootstrap's content-->
+   <link 
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+ </head>
+ <body>
+
+    <!--containers are required for the grid system from Bootstrap to work-->
+    <div class="container">
+      <!--Jumbotron is a Bootstrap component that enhances headers much like an actual jumbotron-->
+      <div class="jumbotron text-center">
+        <!--Create a header which will be dressed up using jumbotron-->
+        <h1>Mission to Mars</h1>
+        <!--<p /> helps with styling the content within the tag-->
+        <!--<a /> tag is used to link to other things, and we've added with classes within it -->
+          <!-- href is the link to another document or webpage; here it is the scrape component of our flask page-->
+         
+          <!--btn btn-primary btn-lg is a Bootstrap component to create a button-->
+            <!--btn = btn creation; btn-primary = primary colour; btn-lg = large button-->
+          <!--role = button lets the webpage know that this functions as a button and not a link--> 
+            <!--needed for impaired assistance to identify it, also identifies the button name-->
+        <p><a class="btn btn-primary btn-lg" href="/scrape"
+          role="button">Scrape New Data</a></p>
+      </div>
+
+      <!-- Mars News -->
+      <!--Bootstrap grid consists of up to 12 columns per row and is responsive-->
+      <!--create the class row to signify we are using Bootstrap's grid system-->
+      <!--id helps us select is later if we want to customize it-->
+      <div class="row" id="mars-news">
+        <!--add a tag to indicate the # of columns, 12 = it will span across the whole page-->
+        <!--md = a mid sized display, xs is ideal for phones, and lg for larger screens-->
+        <div class="col-md-12">
+          <!--tells Bootstrap we want to display media here-->
+          <div class="media">
+            <!--the indicate that the media is displayed in the body-->
+            <div class="media-body">
+              <!--create a header for the media-->
+              <h2>Latest Mars News</h2>
+              <!--create a header that pulls in the article title from our mars_scraping file-->
+              <!--the class applies specific Bootstrap styling-->
+              <h4 class="media-heading">{{mars.news_title}}</h4>
+              <!--again we pull in the article preview from our mars_scraping file into paragraph tags-->
+              <p>{{mars.news_paragraph}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Featured Image -->
+      <!--each new item created will be on it's own row so we use class="row"-->
+      <!--add an id for customization if needed in css-->
+      <div class="row" id="mars-featured-image">
+        <!--next we will choose to use 8 of the columns, we must use all 12 so we will use 4 later-->
+        <div class="col-md-8">
+          <!--add the header for the image-->
+          <h2>Featured Mars Image</h2>
+          <!--add te image by using the img tag, then including the source/link using src-->
+          <!--using class='img=responsive' we make the image responsive using Bootstrap-->
+          <!--alt adds alternative text which is read by visual assistances tools or shown if image won't load-->
+          <img
+            src="{{mars.featured_image }}"
+            class="img-responsive"
+            alt="Responsive image"
+          /> 
+        </div>
+        <!--we will use up the remaining 4 columns on the Mars Facts table-->
+        <div class="col-md-4">
+          <!-- Mars Facts -->
+          <!-- we want the data to line up with same rows as the image so we've nested it within that <div /> tag and row class-->
+          <div class="row" id="mars-facts">
+            <!--add a header for the Mars Facts-->
+            <h4>Mars Facts</h4>
+            <!--reference the table from our mars_scarping file-->
+            <!--the safe section tells the program that there is no malicious content within the file-->
+            {{ mars.facts | safe }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
